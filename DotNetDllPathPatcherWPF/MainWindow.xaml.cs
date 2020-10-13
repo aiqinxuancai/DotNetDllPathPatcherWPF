@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace DotNetDllPathPatcherWPF
 {
@@ -23,11 +24,40 @@ namespace DotNetDllPathPatcherWPF
     {
         public MainWindow()
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            //nowDirTextBlock.Text = Directory.GetCurrentDirectory();
+           
         }
 
 
         private void mainGrid_Drop(object sender, DragEventArgs e)
+        {
+            OnDropFile(e);
+        }
+
+        private void mainGrid_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void runButton_Click(object sender, RoutedEventArgs e)
+        {
+            Conversion.ConversionDll(pathTextBox.Text, newPathTextBox.Text, "");
+        }
+
+        private void pathTextBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+            e.Handled = true;
+        }
+
+        private void pathTextBox_PreviewDrop(object sender, DragEventArgs e)
+        {
+            OnDropFile(e);
+        }
+
+        private void OnDropFile(DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -40,16 +70,6 @@ namespace DotNetDllPathPatcherWPF
             pathTextBox.Text = fileName;
         }
 
-        private void mainGrid_DragEnter(object sender, DragEventArgs e)
-        {
-            //if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            //    e.Effects = DragDropEffects.Link;                            //WinForm中为e.Effect = DragDropEffects.Link
-            //else e.Effects = DragDropEffects.None;                      //WinFrom中为e.Effect = DragDropEffects.None
-        }
 
-        private void runButton_Click(object sender, RoutedEventArgs e)
-        {
-            Conversion.ConversionDll(pathTextBox.Text, "bin", "");
-        }
     }
 }

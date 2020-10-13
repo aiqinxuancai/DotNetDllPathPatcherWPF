@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotNetDllPathPatcherWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="500" AllowDrop="True" Drop="mainGrid_Drop" >
+        Title=".NetCore依赖DLL移动到子目录" Height="200" Width="500" AllowDrop="True" Drop="mainGrid_Drop" ResizeMode="NoResize" >
     <Grid x:Name="mainGrid" DragEnter="mainGrid_DragEnter" >
         <StackPanel Margin="10,10,10,10" >
-            <TextBlock Text="转换路径（支持拖放）"></TextBlock>
-            <TextBox x:Name="pathTextBox" MinHeight="28" Margin="0,5,0,0" />
-            <Button x:Name="runButton" Content="执行" MinHeight="28" Margin="0,5,0,0" Click="runButton_Click"></Button>
-            
+            <TextBlock Text="主EXE或DLL文件路径（支持拖放）"></TextBlock>
+            <TextBox x:Name="pathTextBox" MinHeight="28" Margin="0,5,0,0" VerticalContentAlignment="Center" AllowDrop="True" PreviewDragOver="pathTextBox_PreviewDragOver" PreviewDrop="pathTextBox_PreviewDrop" />
+            <TextBlock Text="移动到子目录" Margin="0,5,0,0" ></TextBlock>
+            <TextBox x:Name="newPathTextBox" Text="bin" MinHeight="28" Margin="0,5,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+            <Button x:Name="runButton" Content="执行" MinHeight="30" Margin="0,5,0,0" Click="runButton_Click"></Button>
         </StackPanel>
         
     </Grid>

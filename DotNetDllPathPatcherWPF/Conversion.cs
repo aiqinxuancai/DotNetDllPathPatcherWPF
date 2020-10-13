@@ -10,13 +10,15 @@ namespace DotNetDllPathPatcherWPF
 
         private const int MaxPathLength = 1024;
 
+        /// <summary>
+        /// 处理.net core的dll依赖
+        /// </summary>
+        /// <param name="exePath"></param>
+        /// <param name="dllPathName"></param>
+        /// <param name="oldDllPathName"></param>
         public static void ConversionDll(string exePath, string dllPathName, string oldDllPathName)
         {
             exePath = Path.GetFullPath(exePath);
-
-            //var dllPathName = @"bin";
-            //var oldDllPathName = string.Empty;
-
             if (string.IsNullOrWhiteSpace(dllPathName))
             {
                 dllPathName = "bin";
@@ -30,10 +32,6 @@ namespace DotNetDllPathPatcherWPF
             PatchExe(oldDllPathName, dllPathName, exePath);
             MoveDll(oldDllPathName, dllPathName, exePath);
         }
-
-
-
-
 
         public static void MoveDll(string oldDllPathName, string dllPathName, string exePath)
         {
@@ -59,13 +57,22 @@ namespace DotNetDllPathPatcherWPF
                 //所有文件移动到新目录
                 Directory.Move(tempPath, newPath);
 
-                //旧文件移动到
+                //旧exe文件移动到出来
                 File.Move(Path.Combine(newPath, Path.GetFileName(exePath)), exePath);
+
+                //需要处理资源文件等等
+                if (Directory.Exists(@$"{newPath}\Resources"))
+                {
+                    Directory.Move(@$"{newPath}\Resources", @$"{root}\Resources");
+                }
             }
             else
             {
                 Directory.Move(Path.Combine(root, oldDllPathName), Path.Combine(root, dllPathName));
             }
+
+
+
         }
 
         public static void PatchExe(string oldDllPathName, string dllPathName, string exePath)
