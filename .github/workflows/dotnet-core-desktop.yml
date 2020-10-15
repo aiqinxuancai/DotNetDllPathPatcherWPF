@@ -46,8 +46,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    name: Dotnet Side by Side testing sample
+    runs-on: windwos-latest
+    name: Dotnet build
     steps:
       - uses: actions/checkout@v2
       - name: Setup dotnet
