@@ -1,11 +1,10 @@
 
 name: .NET Core Desktop
 
-on:
+on: 
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+    - '*'
 
 jobs:
   build:
