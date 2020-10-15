@@ -23,7 +23,7 @@ jobs:
       #- run: dotnet build DotNetDllPathPatcherWPF
       - run: dotnet publish -c Release --runtime win-x64
       #- run: zip -q -r bin\Release\netcoreapp3.1\DotNetDllPathPatcherWPF.zip 
-      - run: Compress-7Zip "bin\Release\netcoreapp3.1\publish" -ArchiveFileName "DotNetDllPathPatcherWPF.zip" -Format Zip
+      - run: Compress-7Zip "bin\Release\netcoreapp3.1\win-x64\publish" -ArchiveFileName "DotNetDllPathPatcherWPF.zip" -Format Zip
       - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
