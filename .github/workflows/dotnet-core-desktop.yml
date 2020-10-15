@@ -46,7 +46,7 @@ on:
 
 jobs:
   build:
-    runs-on: windwos-latest
+    runs-on: windows-latest
     name: Dotnet build
     steps:
       - uses: actions/checkout@v2
