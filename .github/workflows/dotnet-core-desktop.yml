@@ -25,10 +25,9 @@ jobs:
       - run: dotnet publish --runtime win-x64
       #- run: zip -q -r bin\Release\netcoreapp3.1\DotNetDllPathPatcherWPF.zip 
       - run: Compress-7Zip "bin\Release\netcoreapp3.1\publish" -ArchiveFileName "DotNetDllPathPatcherWPF.zip" -Format Zip
-        
-      - name: Create a Release Web
+      - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "bin/Release/netcoreapp3.1/DotNetDllPathPatcherWPF.zip"
+          artifacts: "DotNetDllPathPatcherWPF.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
         
