@@ -47,12 +47,19 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    name: Dotnet build
+    name: Dotnet Build
     steps:
       - uses: actions/checkout@v2
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.101'
-      - run: dotnet build DotNetDllPathPatcherWPF
+      #- run: dotnet build DotNetDllPathPatcherWPF
+      - run: dotnet publish --runtime win-x64
+      - run: zip -q -r bin\Release\netcoreapp3.1\DotNetDllPathPatcherWPF.zip bin\Release\netcoreapp3.1\publish
+      - name: Create a Release Web
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "bin/Release/netcoreapp3.1/DotNetDllPathPatcherWPF.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
         
