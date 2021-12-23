@@ -1,9 +1,9 @@
-﻿using DotNetDllPathPatcherWPF;
+﻿using DotNetDllPathPatcherCMD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace DotNetDllPathPatcherCMD // Note: actual namespace depends on the project name.
 {
     public class Program
     {
@@ -16,9 +16,27 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     string fileName = args[0];
                     string binPath = "bin";
                     string oldBinPath = "";
-                    Console.WriteLine("Start...");
-                    Conversion.ConversionDll(fileName, binPath, oldBinPath);
+                    Console.WriteLine($"Move dll to ‘{binPath}’");
+                    try
+                    {
+                        Conversion.ConversionDll(fileName, binPath, oldBinPath);
+                        Console.WriteLine("Success！");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    
+
                 }
+                else 
+                {
+                    Console.WriteLine("File not exist.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Missing exe file path.");
             }
 
 
