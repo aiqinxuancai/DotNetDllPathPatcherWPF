@@ -19,14 +19,18 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.101'
-      #- run: dotnet build DotNetDllPathPatcherWPF
+          dotnet-version: '6.0.*'
       - run: dotnet publish -c Release --runtime win-x64
-      #- run: zip -q -r bin\Release\netcoreapp3.1\DotNetDllPathPatcherWPF.zip 
-      - run: powershell Compress-7Zip $env:GITHUB_WORKSPACE\DotNetDllPathPatcherWPF\bin\Release\netcoreapp3.1\win-x64\publish -ArchiveFileName "DotNetDllPathPatcherWPF.zip" -Format Zip
+      - run: powershell Compress-7Zip $env:GITHUB_WORKSPACE\DotNetDllPathPatcherWPF\bin\Release\net6.0-windows\publish\win-x64 -ArchiveFileName "DotNetDllPathPatcherWPF.zip" -Format Zip
+      - run: powershell Compress-7Zip $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\bin\Release\net6.0\publish\win-x64 -ArchiveFileName "DotNetDllPathPatcherCMD.zip" -Format Zip
       - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "DotNetDllPathPatcherWPF.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a Release CMD
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "DotNetDllPathPatcherCMD.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
         
