@@ -26,7 +26,7 @@ jobs:
       - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "DotNetDllPathPatcherWPF.zip"
+          artifacts: "DotNetDllPathPatcherWPF.zip,DotNetDllPathPatcherCMD.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
 #       - name: Create a Release CMD
 #         uses: ncipollo/release-action@v1
