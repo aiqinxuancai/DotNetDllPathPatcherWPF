@@ -18,8 +18,8 @@ jobs:
         with:
           dotnet-version: '6.0.*'
       - run: dotnet publish -c Release --runtime win-x64
-      - run: powershell Compress-Archive -Path .\DotNetDllPathPatcherWPF.zip -DestinationPath $env:GITHUB_WORKSPACE\DotNetDllPathPatcherWPF\bin\Release\net6.0-windows\publish\win-x64
-      - run: powershell Compress-Archive -Path .\DotNetDllPathPatcherCMD.zip -DestinationPath $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\bin\Release\net6.0\publish\win-x64
+      - run: powershell Compress-Archive -Path .\DotNetDllPathPatcherWPF.zip -DestinationPath $env:GITHUB_WORKSPACE\DotNetDllPathPatcherWPF\bin\Release\net6.0-windows\win-x64\publish\
+      - run: powershell Compress-Archive -Path .\DotNetDllPathPatcherCMD.zip -DestinationPath $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\bin\Release\net6.0\win-x64\publish
       - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
