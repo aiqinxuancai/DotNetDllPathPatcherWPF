@@ -12,6 +12,11 @@ namespace DotNetDllPathPatcherCMD // Note: actual namespace depends on the proje
         {
             if (args.Length != 0)
             {
+                foreach (string arg in args)
+                {
+                    Console.WriteLine($"args:{arg}");
+                }
+
                 if (File.Exists(args[0]))
                 {
                     string fileName = args[0];
@@ -26,15 +31,12 @@ namespace DotNetDllPathPatcherCMD // Note: actual namespace depends on the proje
                         //完成
                         //获取获取是否要运行某个EXE，运行后等待15秒，然后执行删除不引用的dll，然后结束进程
 
-                        string myLibraryShrink = args.First(a => a.StartsWith("--MyLibraryShrink"));
-                        if (!string.IsNullOrWhiteSpace(myLibraryShrink))
-                        {
-                            var myLibraryShrinks = myLibraryShrink.Split(":");
 
-                            if (myLibraryShrinks.Length == 2)
-                            {
-                                RunLibraryShrink(fileName, binPath);
-                            }
+
+                        bool myLibraryShrink = args.Any(a => a == "--MyLibraryShrink");
+                        if (myLibraryShrink)
+                        {
+                            RunLibraryShrink(fileName, binPath);
 
                         }
                         
@@ -107,6 +109,10 @@ namespace DotNetDllPathPatcherCMD // Note: actual namespace depends on the proje
                     }
                 }
 
+            } 
+            else
+            {
+                Console.WriteLine($"File {fileName} not find ");
             }
         }
     }
