@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetDllPathPatcherWPF", "DotNetDllPathPatcherWPF\DotNetDllPathPatcherWPF.csproj", "{288875FD-B84B-4C32-9B48-613BBD37E084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetDllPathPatcherCMD", "DotNetDllPathPatcherCMD\DotNetDllPathPatcherCMD.csproj", "{5C85EA9A-6412-4C3B-B208-8881F574E811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetDllPathPatcherCMD", "DotNetDllPathPatcherCMD\DotNetDllPathPatcherCMD.csproj", "{5C85EA9A-6412-4C3B-B208-8881F574E811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetDllPathPatcherAvalonia", "DotNetDllPathPatcherAvalonia\DotNetDllPathPatcherAvalonia.csproj", "{6C8739A4-8900-48B6-81E4-5A4BBC7E99DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5C85EA9A-6412-4C3B-B208-8881F574E811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C85EA9A-6412-4C3B-B208-8881F574E811}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C85EA9A-6412-4C3B-B208-8881F574E811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C8739A4-8900-48B6-81E4-5A4BBC7E99DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8739A4-8900-48B6-81E4-5A4BBC7E99DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8739A4-8900-48B6-81E4-5A4BBC7E99DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8739A4-8900-48B6-81E4-5A4BBC7E99DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
