@@ -23,7 +23,8 @@ jobs:
       - run: powershell curl https://github.com/bflattened/bflat/releases/download/v7.0.2/bflat-7.0.2-windows-x64.zip -o bflat.zip
       - run: powershell Expand-Archive -Path .\bflat.zip -DestinationPath .\bflat
       - run: powershell .\bflat\bflat.exe build $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\Program.cs $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\Conversion.cs --os:windows --no-reflection --no-stacktrace-data --no-globalization --no-exception-messages
-      - run: powershell Compress-Archive -Path $env:GITHUB_WORKSPACE\DotNetDllPathPatcherCMD\Program.exe -DestinationPath .\DotNetDllPathPatcherCMD-Bflat.zip
+      - run: powershell rename-Item .\Program.exe -NewName DotNetDllPathPatcherCMD-Bflat.exe
+      - run: powershell Compress-Archive -Path .\Program.exe -DestinationPath .\DotNetDllPathPatcherCMD-Bflat.zip
       - name: Create a Release
         uses: ncipollo/release-action@v1
         with:
