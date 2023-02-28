@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 	  <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
 	  <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
-	  <PulishAot>true</PulishAot>
+	  <PublishAot>true</PublishAot>
   </PropertyGroup>
 
 </Project>
